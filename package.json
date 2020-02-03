@@ -1,0 +1,23 @@
+{
+  "name": "voronois-complaint",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "babel-loader": "^8.0.6",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --config webpack.config.js --watch"
+    
+  },
+  "author": "",
+  "license": "ISC"
+}
