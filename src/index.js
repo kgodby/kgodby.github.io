@@ -1,6 +1,6 @@
 
 
-import {discSampler} from './bridson'
+import {poissonDiscSampler} from './sampler'
 import {AvlTree} from './tree/avl'
 
 
@@ -8,30 +8,35 @@ import {AvlTree} from './tree/avl'
 
 const canvas = document.getElementById("sampleSpace"),
 tree = new AvlTree,
-sampler = discSampler(960, 500, 5),
+sampler = poissonDiscSampler(960, 500, 10),
 ctx = canvas.getContext("2d");
 canvas.width = 960;
 canvas.height = 500;
-let count = 0
+
 // debugger
-let s;
-while(count < 20000){
+let p,s = sampler();
+
+
+while(p = s.next().value){
     // tree.add(s[sample]);
    
-    s = sampler();
-    if(s){
-        tree.add(s);
-        count++
+  
+    if(p.value){
+        tree.add(p.value);
+       
     }
-   
+ 
 }
+
+
 const gen = tree.inOrderTraversal()
 
 
 while(gen.next().value){
  
     if(s = gen.next().value.value){
-    
+  
         ctx.fillRect(s[0], s[1], 1, 1)
+        
     }
 }
